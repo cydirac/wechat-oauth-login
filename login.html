@@ -53,7 +53,7 @@
             method: 'GET',
             success: function(data){
                 var jsn=JSON.stringify(data);
-                $("#uname").val('User ID:'+jsn+'--'+'Device ID:'+jsn.deviceid);
+                $("#uname").val('User ID:'+data.UserId+'--'+'Device ID:'+data.DeviceId);
             },
             error: function(jqXHR, textStatus, errorThrown){
                 $('#uname').val(jqXHR.status+'-jqhr-'+jqXHR.responseText+'-status-'+errorThrown);
