@@ -51,6 +51,7 @@
             method: 'GET',
             success: function(data){
                 $("#show").html(data); 
+                $("#uname").val('--'+data+'--')
             },
             error: function(jqXHR, textStatus, errorThrown){
                 $('#uname').val(jqXHR.status+'-jqhr-'+jqXHR.responseText+'-status-'+errorThrown);
