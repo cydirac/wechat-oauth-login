@@ -50,13 +50,7 @@
             url: 'http://117.78.7.87:8081/wework/cgi-bin/user/getuserinfo?access_token='+token+'&code='+code,
             method: 'GET',
             success: function(data){
-                if(data.result==1){
-                    $("#show").html(data);
-                    $('#uname').val(data);
-                } else{
-                    $("#show").html('empty');
-                    $('#uname').val('empty');
-                }
+                $("#show").html(data); 
             },
             error: function(jqXHR, textStatus, errorThrown){
                 $('#uname').val(jqXHR.status+'-jqhr-'+jqXHR.responseText+'-status-'+errorThrown);
