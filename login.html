@@ -47,7 +47,7 @@
         function sendUrl(){
             $('#uname').val(code);
             $.ajax({
-            url: 'http://202.106.175.109:443/cgi-bin/user/getuserinfo?access_token='+token+'&code='+code,
+            url: 'http://117.78.7.87:8081/wework/cgi-bin/user/getuserinfo?access_token='+token+'&code='+code,
             method: 'GET',
             success: function(data){
                 if(data.result==1){
