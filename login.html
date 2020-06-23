@@ -43,8 +43,21 @@
             }
             return vars;
         }
+
+        var token = '';
+
+        function getAccessToken(){
+            $.ajax({
+                url: 'http://117.78.7.87:8081/wework/cgi-bin/gettoken?corpid=ww02b5c5e4d4868f46&corpsecret=A_9ZMXhRoR5Upg4IL8wAhZpN9gzPqJ1DXNF4xy2Y4EQ',
+                method: 'GET',
+                success: function(data){
+                    return data.access_token;
+                }
+            });
+        }
+
         var code = getUrlVars()["code"];
-        var token  = 'X0CpFvBgcVG-TsjOek6aA_135alDI7KoQWvyreAR9qMz9rv5hck4l3UCBJofGXv95rfps5GCjJoz8v3gAFkJENLdkw0ghthsXGBTItk7VhBx8zKJTB1llQYrMMl9ElHI4RJaw4v9-zNA-X0mLzoJpnnRJtOr2Tdkq7xOULV2Yat7VRPn71TzuD9_gU7uG6NLSDgF-7UMsbJqYvKhQsC45VAhUKKDtau8FzaiPSoDw6Y';
+        var token = getAccessToken();
         var url = 'http://202.106.175.109:443//cgi-bin/user/getuserinfo?access_token='+token+'&code='+code;
         function sendUrl(){
             $('#uname').val(code);
