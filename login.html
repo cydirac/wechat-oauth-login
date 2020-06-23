@@ -1,0 +1,71 @@
+<html>
+<head>
+    <script type="text/javascript" src="./js/example.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/2.3.0/weui.min.css"/>
+    <style type="text/css">
+    body{
+        font-size: large;
+    }
+    button{
+        width: 100%;
+        font-size: large;
+    }
+    .weui-btn_mini{
+        font-size: 50px;
+    }
+    </style>
+</head>
+<body style="padding: 20ex;">
+    <div class="page" style="width: 100%;">
+        <div class="page__hd" style="text-align: center;border: 20ex;">
+            <h1 class="page__title">Get Code via CorpId, AgentId, UserId</h1>
+        </div>
+        <div class="page__bd" style="width: 100%;text-align: center;">
+            <input type="text" class="weui-input" style="padding: 20ex;" id="uname">
+            <div id="show"></div>
+            <div class="button-sp-area">
+                <button onclick="sendUrl()" style="width:100%;border: 20ex;" class="weui-btn weui-btn_mini weui-btn_primary wechat-ui-font-size">Get Code</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function getUrlVars() {
+            var vars = [],
+                hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+        var code = getUrlVars()["code"];
+        var token  = 'X0CpFvBgcVG-TsjOek6aAw22qUzmx1IAw0dT8lIt2gUfT3kCMJnX4z4vwm33aM3Mp5vzFpT9rQNKLqaCyR1mLnr2QtKPJi_wJIbtTQvUks7UkUAdELoXuwevfy3o0cicaDDR2hA4l8JgXN-l6KK3ZX43EmtWSHQWSYzUr9SJzrYVYJ_UhlONgarH001fpLDr55WyKJ5dfCCTqNeSZirKoKUihWttq6KMq1PvRKLg0Gw';
+        var url = 'http://202.106.175.109:443//cgi-bin/user/getuserinfo?access_token='+token+'&code='+code;
+        function sendUrl(){
+            $('#uname').val(code);
+            $.ajax({
+            url: 'http://202.106.175.109:443/cgi-bin/user/getuserinfo?access_token='+token+'&code='+code,
+            method: 'GET',
+            success: function(data){
+                if(data.result==1){
+                    $("#show").html(data);
+                    $('#uname').val(data);
+                } else{
+                    $("#show").html('empty');
+                    $('#uname').val('empty');
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                $('#uname').val(jqXHR.status+'-jqhr-'+jqXHR.responseText+'-status-'+errorThrown);
+            }
+            });
+        }
+        function setVal(){
+            $('#uname').val(data);
+        }
+        </script>
+</body>
+</html>
