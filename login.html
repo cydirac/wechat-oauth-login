@@ -51,7 +51,7 @@
             method: 'GET',
             success: function(data){
                 var result = JSON.parse(data);
-                $("#uname").val('--'+result.userid+'--');
+                $("#uname").val('--User ID--:'+result.userid+'--');
             },
             error: function(jqXHR, textStatus, errorThrown){
                 $('#uname').val(jqXHR.status+'-jqhr-'+jqXHR.responseText+'-status-'+errorThrown);
