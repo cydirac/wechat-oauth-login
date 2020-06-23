@@ -21,7 +21,9 @@
             <h1 class="page__title">Get Code via CorpId, AgentId, UserId</h1>
         </div>
         <div class="page__bd" style="width: 100%;text-align: center;">
+            code:
             <input type="text" class="weui-input" style="padding: 20ex;" id="code">
+            error:
             <input type="text" class="weui-input" style="padding: 20ex;" id="uname">
             <div id="show"></div>
             <div class="button-sp-area">
@@ -51,7 +53,7 @@
             method: 'GET',
             success: function(data){
                 var jsn=JSON.stringify(data);
-                $("#uname").val('User ID:'+jsn.userid+'--'+'Device ID:'+jsn.deviceid);
+                $("#uname").val('User ID:'+jsn+'--'+'Device ID:'+jsn.deviceid);
             },
             error: function(jqXHR, textStatus, errorThrown){
                 $('#uname').val(jqXHR.status+'-jqhr-'+jqXHR.responseText+'-status-'+errorThrown);
