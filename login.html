@@ -1,42 +1,64 @@
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
     <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/2.3.0/weui.min.css"/>
-    <style type="text/css">
-    body{
-        font-size: large;
-    }
-    button{
-        width: 100%;
-        font-size: large;
-    }
-    .weui-btn_mini{
-        font-size: 50px;
-    }
-    .ç{
-        padding-top: 10ex;
-        font-size: 40px;
-    }
-    </style>
 </head>
-<body style="padding: 20ex;">
-    <div class="page" style="width: 100%;">
-        <div class="page__hd weui-input-font-size" style="text-align: center;">
-            <h1 class="page__title">Get Code via CorpId, AgentId, UserId</h1>
-        </div>
-        <div class="page__bd" style="width: 100%;text-align: center;">
-            <h4 class="weui-media-box__title weui-input-font-size">code:</h4>
-            <input type="text" class="weui-input weui-input-font-size" id="code">
-            <h4 class="weui-media-box__title weui-input-font-size">User ID:</h4>
-            <input type="text" class="weui-input" style="font-size: xx-large;" id="uname">
-            <h4 class="weui-media-box__title weui-input-font-size">Access Token:</h4>
-            <input type="text" class="weui-input" style="font-size: xx-large;" id="accesstoken">
-            <div id="show"></div>
-            <div class="button-sp-area">
-                <button onclick="sendUrl()" style="width:100%;border: 20ex;" class="weui-btn weui-btn_mini weui-btn_primary wechat-ui-font-size">Get Code</button>
+<body>
+    <div class="container" id="container">
+        
+            <div class="page form_page js_show">
+                <div class="weui-form">
+                    <div class="weui-form__text-area">
+                        <h2 class="weui-form__title">Get Code</h2>
+                        <div class="weui-form__desc">Get code via agentid, application secret, corpId</div>
+                    </div>
+                    <div class="weui-form__control-area">
+                        <div class="weui-cells__group weui-cells__group_form">
+                            <div class="weui-cells__title">The response parameters</div>
+                            <div class="weui-cells weui-cells_form">
+                                <div class="weui-cell weui-cell_active">
+                                    <label class="weui-label">Code:</label>
+                                    <input type="text" class="weui-input" id="code">
+                                </div>
+                                <div class="weui-cell weui-cell_active">
+                                    <label class="weui-label">User Id:</label>
+                                    <input type="text" class="weui-input" id="uname">
+                                </div>
+                                <div class="weui-cell weui-cell_active">
+                                    <label class="weui-label">Token:</label>
+                                    <input type="text" class="weui-input" id="accesstoken">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-form__tips-area">
+                        <p class="weui-form__tips">
+                          Click the button to get the code.
+                        </p>
+                    </div>
+
+                    <div class="weui-form__opr-area">
+                        <button onclick="sendUrl()" class="weui-btn weui-btn_primary">Get Code</button>
+                    </div>
+                    <div class="weui-form__tips-area">
+                        <p class="weui-form__tips">
+                          This is internal testing.
+                        </p>
+                    </div>
+                    <div class="weui-form__extra-area">
+                        <div class="weui-footer">
+                          <p class="weui-footer__links">
+                            <a href="javascript:" class="weui-footer__link">WeChat Corporate PoC</a>
+                          </p>
+                          <p class="weui-footer__text">Copyright © 2008-2019 VGC.ITP</p>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-        </div>
+        
     </div>
     <script type="text/javascript">
         // wx.ready(function(){
