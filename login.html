@@ -32,6 +32,7 @@
         </div>
     </div>
     <script type="text/javascript">
+        console.log('tes2');
         function getUrlVars() {
             var vars = [],
                 hash;
@@ -43,26 +44,27 @@
             }
             return vars;
         }
+        
+        var accesstoken = '0';
+        $.ajax({
+            url: 'http://117.78.7.87:8081/wework/cgi-bin/gettoken?corpid=ww02b5c5e4d4868f46&corpsecret=A_9ZMXhRoR5Upg4IL8wAhZpN9gzPqJ1DXNF4xy2Y4EQ',
+            method: 'GET',
+            success: function(data){
+                accesstoken = data.access_token;
+                return accesstoken;
+                console.log(accesstoken);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log('fail');  
+            } 
+        });
 
-        var token = '';
-
-        function getAccessToken(){
-            $.ajax({
-                url: 'http://117.78.7.87:8081/wework/cgi-bin/gettoken?corpid=ww02b5c5e4d4868f46&corpsecret=A_9ZMXhRoR5Upg4IL8wAhZpN9gzPqJ1DXNF4xy2Y4EQ',
-                method: 'GET',
-                success: function(data){
-                    $('#uname').val(code)
-                    return data.access_token;
-                },
-                error: function(jqXHR, textStatus, errorThrown){
-                    $('#uname').val(jqXHR.status+'-jqhr-'+jqXHR.responseText+'-status-'+errorThrown);
-                    $('#code').val(code);
-                } 
-            });
-        }
+            
+        
 
         var code = getUrlVars()["code"];
         var token = getAccessToken();
+        console.log('token: '+token);
         var url = 'http://202.106.175.109:443//cgi-bin/user/getuserinfo?access_token='+token+'&code='+code;
         function sendUrl(){
             $('#uname').val(code);
