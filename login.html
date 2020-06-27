@@ -15,6 +15,7 @@
         font-size: 50px;
     }
     .weui-input-font-size{
+        padding-top: 20ex;
         font-size: 40px;
     }
     </style>
@@ -25,11 +26,11 @@
             <h1 class="page__title">Get Code via CorpId, AgentId, UserId</h1>
         </div>
         <div class="page__bd" style="width: 100%;text-align: center;">
-            <h4 class="weui-media-box__title">code:</h4>
+            <h4 class="weui-media-box__title weui-input-font-size">code:</h4>
             <input type="text" class="weui-input" id="code">
-            <h4 class="weui-media-box__title">User ID:</h4>
+            <h4 class="weui-media-box__title weui-input-font-size">User ID:</h4>
             <input type="text" class="weui-input" style="font-size: xx-large;" id="uname">
-            <h4 class="weui-media-box__title">Access Token:</h4>
+            <h4 class="weui-media-box__title weui-input-font-size">Access Token:</h4>
             <input type="text" class="weui-input" style="font-size: xx-large;" id="accesstoken">
             <div id="show"></div>
             <div class="button-sp-area">
@@ -98,7 +99,7 @@
             method: 'GET',
             success: function(data){
                 var jsn=JSON.stringify(data);
-                $("#uname").val('User ID:'+data.UserId);
+                $("#uname").val(data.UserId);
                 $('#code').val(code);
             },
             error: function(jqXHR, textStatus, errorThrown){
