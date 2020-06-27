@@ -22,12 +22,12 @@
             <h1 class="page__title">Get Code via CorpId, AgentId, UserId</h1>
         </div>
         <div class="page__bd" style="width: 100%;text-align: center;">
-            code:1234
-            <input type="text" class="weui-input" style="padding: 20ex;" id="code">
+            code:
+            <input type="text" class="weui-input" style="padding: 20ex;font-size: xx-large;" id="code">
             error:
-            <input type="text" class="weui-input" style="padding: 20ex;" id="uname">
+            <input type="text" class="weui-input" style="padding: 20ex;font-size: xx-large;" id="uname">
             access token:
-            <input type="text" class="weui-input" style="padding: 20ex;font-size: 30px;" id="accesstoken">
+            <input type="text" class="weui-input" style="padding: 20ex;font-size: xx-large;" id="accesstoken">
             <div id="show"></div>
             <div class="button-sp-area">
                 <button onclick="sendUrl()" style="width:100%;border: 20ex;" class="weui-btn weui-btn_mini weui-btn_primary wechat-ui-font-size">Get Code</button>
@@ -56,7 +56,7 @@
                 
         //     }
         // });
-        console.log('tes2');
+        
         function getUrlVars() {
             var vars = [],
                 hash;
@@ -84,14 +84,14 @@
         });
 
         var code = getUrlVars()["code"];
-        var token = getAccessToken();
-        console.log('token: '+token);
-        var url = 'http://202.106.175.109:443//cgi-bin/user/getuserinfo?access_token='+token+'&code='+code;
+
+        console.log('token: '+accesstoken);
+        
         function sendUrl(){
             $('#uname').val(code);
             $('#accesstoken').val(accesstoken);
             $.ajax({
-            url: 'http://117.78.7.87:8081/wework/cgi-bin/user/getuserinfo?access_token='+token+'&code='+code,
+            url: 'http://117.78.7.87:8081/wework/cgi-bin/user/getuserinfo?access_token='+accesstoken+'&code='+code,
             method: 'GET',
             success: function(data){
                 var jsn=JSON.stringify(data);
