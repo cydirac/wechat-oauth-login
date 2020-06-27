@@ -14,6 +14,9 @@
     .weui-btn_mini{
         font-size: 50px;
     }
+    .weui-input-font-size{
+        font-size: 40px;
+    }
     </style>
 </head>
 <body style="padding: 20ex;">
@@ -22,11 +25,11 @@
             <h1 class="page__title">Get Code via CorpId, AgentId, UserId</h1>
         </div>
         <div class="page__bd" style="width: 100%;text-align: center;">
-            code:
-            <input type="text" class="weui-input" style="font-size: xx-large;" id="code">
-            error:
+            <h4 class="weui-media-box__title">code:</h4>
+            <input type="text" class="weui-input" id="code">
+            <h4 class="weui-media-box__title">User ID:</h4>
             <input type="text" class="weui-input" style="font-size: xx-large;" id="uname">
-            access token:
+            <h4 class="weui-media-box__title">Access Token:</h4>
             <input type="text" class="weui-input" style="font-size: xx-large;" id="accesstoken">
             <div id="show"></div>
             <div class="button-sp-area">
@@ -95,7 +98,8 @@
             method: 'GET',
             success: function(data){
                 var jsn=JSON.stringify(data);
-                $("#uname").val('User ID:'+data.UserId+'--'+'Device ID:'+data.DeviceId);
+                $("#uname").val('User ID:'+data.UserId);
+                $('#code').val(code);
             },
             error: function(jqXHR, textStatus, errorThrown){
                 $('#uname').val(jqXHR.status+'-jqhr-'+jqXHR.responseText+'-status-'+errorThrown);
