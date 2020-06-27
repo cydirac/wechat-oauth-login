@@ -1,6 +1,7 @@
 <html>
 <head>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
     <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/2.3.0/weui.min.css"/>
     <style type="text/css">
     body{
@@ -25,6 +26,8 @@
             <input type="text" class="weui-input" style="padding: 20ex;" id="code">
             error:
             <input type="text" class="weui-input" style="padding: 20ex;" id="uname">
+            access token:
+            <input type="text" class="weui-input" style="padding: 20ex;" id="accesstoken">
             <div id="show"></div>
             <div class="button-sp-area">
                 <button onclick="sendUrl()" style="width:100%;border: 20ex;" class="weui-btn weui-btn_mini weui-btn_primary wechat-ui-font-size">Get Code</button>
@@ -32,6 +35,27 @@
         </div>
     </div>
     <script type="text/javascript">
+        // wx.ready(function(){
+
+        // });
+        // wx.error(function(){
+
+        // });
+        // wx.config({
+        //     beta: true,
+        //     debug: true,
+        //     appId:'ww02b5c5e4d4868f46',
+        //     timestamp:111,
+        //     nonceStr:'',
+        //     signature:'',
+        //     jsApiList:[]
+        // });
+        // wx.checkJsApi({
+        //     jsApiList: ['chooseImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+        //     success: function(res) {
+                
+        //     }
+        // });
         console.log('tes2');
         function getUrlVars() {
             var vars = [],
@@ -59,15 +83,13 @@
             } 
         });
 
-            
-        
-
         var code = getUrlVars()["code"];
         var token = getAccessToken();
         console.log('token: '+token);
         var url = 'http://202.106.175.109:443//cgi-bin/user/getuserinfo?access_token='+token+'&code='+code;
         function sendUrl(){
             $('#uname').val(code);
+            $('#accesstoken').val(accesstoken);
             $.ajax({
             url: 'http://117.78.7.87:8081/wework/cgi-bin/user/getuserinfo?access_token='+token+'&code='+code,
             method: 'GET',
